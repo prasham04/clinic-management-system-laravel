@@ -23,7 +23,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{ route('major.index') }}" class="nav-link {{ (request()->is('majors*')) ? 'active' : '' }}">
+            <a href="{{ route('major.index') }}" class="nav-link {{ (request()->is('admin/majors*')) ? 'active' : '' }}">
               <i class="nav-icon fas fa-list"></i>
               <p>
                 Majors

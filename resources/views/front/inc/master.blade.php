@@ -1,10 +1,9 @@
  @include('front.inc.head')
 
- <div class="page-wrapper">
     @include('front.inc.navbar')
 
-    @yield('content')
+    @include('front.inc.breadcrumb')
 
- </div>
+    @yield('content')
 
 @include('front.inc.footer')

@@ -10,7 +10,7 @@
   
     @include('admin.inc.navbar')
 
-    @include('admin.inc.breadchamb')
+    @include('admin.inc.breadcrumb')
   
    @include('admin.inc.sidebar')
 

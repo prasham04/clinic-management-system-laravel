@@ -1,3 +1,5 @@
+</div>
+</div>
 <footer class="container-fluid bg-blue text-white py-3">
     <div class="row gap-2">
 
