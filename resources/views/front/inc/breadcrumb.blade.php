@@ -1,4 +1,4 @@
-@if (request()->is(''))
+@if (!(request()->is('/')))
     <div class="container">
     <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb" class="fw-bold my-4 h4">
         <ol class="breadcrumb justify-content-center">

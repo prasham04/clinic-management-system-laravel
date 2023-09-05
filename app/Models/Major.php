@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Doctor;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Major extends Model
 {
@@ -13,4 +14,10 @@ class Major extends Model
         'title',
         'image'
     ];
+
+    public const IMAGE_PATH = 'images/majors/';
+
+    public function doctors() {
+        return $this->hasMany(Doctor::class);
+    }
 }

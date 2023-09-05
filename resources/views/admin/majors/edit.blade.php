@@ -23,7 +23,7 @@
           </div>
       @endif
 
-      <form action="{{ route('major.update' , $major->id) }}" method="POST" enctype="multipart/form-data">
+      <form action="{{ route('admin.major.update' , $major) }}" method="POST" enctype="multipart/form-data">
           @csrf
           @method('PUT')
           <label for="">Title</label>

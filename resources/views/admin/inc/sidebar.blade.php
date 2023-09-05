@@ -15,7 +15,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item">
-            <a href="{{ route('admin.index') }}" class="nav-link {{ (request()->is('dashboard')) ? 'active' : '' }}">
+            <a href="{{ route('admin.dashboard') }}" class="nav-link {{ (request()->is('admin')) ? 'active' : '' }}">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
@@ -23,10 +23,50 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{ route('major.index') }}" class="nav-link {{ (request()->is('admin/majors*')) ? 'active' : '' }}">
-              <i class="nav-icon fas fa-list"></i>
+            <a href="{{ route('admin.major.index') }}" class="nav-link {{ (request()->is('admin/majors*')) ? 'active' : '' }}">
+              <i class="nav-icon fas fa-stethoscope"></i>
               <p>
                 Majors
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ route('admin.doctor.index') }}" class="nav-link {{ (request()->is('admin/doctors*')) ? 'active' : '' }}">
+              <i class="nav-icon fas fa-user-md"></i>
+              <p>
+                Doctors
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ route('admin.booking.index') }}" class="nav-link {{ (request()->is('admin/bookings*')) ? 'active' : '' }}">
+              <i class="nav-icon fas fa-calendar-check"></i>
+              <p>
+                Bookings
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ route('admin.user.index') }}" class="nav-link {{ (request()->is('admin/users*')) ? 'active' : '' }}">
+              <i class="nav-icon fas fa-user-shield"></i>
+              <p>
+                Users
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ route('admin.contact.index') }}" class="nav-link {{ (request()->is('admin/contacts*')) ? 'active' : '' }}">
+              <i class="nav-icon fas fa-envelope"></i>
+              <p>
+                Contacts
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link {{-- {{ (request()->is('admin/contacts*')) ? 'active' : '' }} --}}">
+              <i class="nav-icon fas fa-cog"></i>
+              <p>
+                Settings
               </p>
             </a>
           </li>

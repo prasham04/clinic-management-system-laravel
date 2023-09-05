@@ -24,7 +24,7 @@
                 </div>
             @endif
 
-            <form action="{{ route('major.store') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('admin.major.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <label for="">Title</label>
                 <input class="form-control form-control-lg" type="text" name="title" value="{{ old('title') }}">

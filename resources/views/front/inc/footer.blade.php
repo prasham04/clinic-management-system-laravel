@@ -16,12 +16,16 @@
         <div class="col-sm order-sm-2">
             <h1 class="h1">Links</h1>
             <div class="links d-flex gap-2 flex-wrap">
-                <a href="./index.html" class="link text-white">Home</a>
-                <a href="./majors.html" class="link text-white">Majors</a>
-                <a href="./doctors/index.html" class="link text-white">Doctors</a>
-                <a href="./login.html" class="link text-white">Login</a>
-                <a href="./register.html" class="link text-white">Register</a>
-                <a href="./contact.html" class="link text-white">Contact</a>
+                <a href="{{ route('front.home') }}" class="link text-white">Home</a>
+                <a href="{{ route('front.majors') }}" class="link text-white">Majors</a>
+                <a href="{{ route('front.doctors') }}" class="link text-white">Doctors</a>
+
+                @guest
+                <a href="{{ route('login') }}" class="link text-white">Login</a>
+                <a href="{{ route('register') }}" class="link text-white">Register</a>
+                @endguest
+               
+                <a href="{{ route('front.contact') }}" class="link text-white">Contact</a>
             </div>
         </div>
     </div>
