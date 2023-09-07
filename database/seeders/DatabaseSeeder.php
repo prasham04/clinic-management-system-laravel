@@ -6,7 +6,9 @@ namespace Database\Seeders;
 
 use App\Models\Doctor;
 use Illuminate\Database\Seeder;
+use Database\Seeders\MajorSeeder;
 use Database\Seeders\DoctorSeeder;
+use Database\Seeders\SettingSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -17,17 +19,18 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
 
-        // \App\Models\User::create([
-        //     'name' => 'admin',
-        //     'email' => 'admin@admi.com',
-        //     'password' => bcrypt('12345678'),
-        //     'phone' => '123456789',
-        //     'role' => 'admin'
-        // ]);
+        \App\Models\User::create([
+            'name' => 'admin',
+            'email' => 'admin@admin.com',
+            'password' => bcrypt('12345678'),
+            'phone' => '12345678910',
+            'role' => 'admin'
+        ]);
 
         $this->call([
             MajorSeeder::class,
-            DoctorSeeder::class
+            DoctorSeeder::class,
+            SettingSeeder::class
         ]);
     }
 }

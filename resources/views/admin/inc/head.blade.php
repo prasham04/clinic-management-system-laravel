@@ -19,6 +19,8 @@
   <link rel="stylesheet" href="{{ asset('AdminAssets')}}/plugins/jqvmap/jqvmap.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="{{ asset('AdminAssets')}}/dist/css/adminlte.min.css">
+  <!-- Tabs style -->
+  <link rel="stylesheet" href="{{ asset('AdminAssets')}}/dist/css/tabs.css">
   <!-- overlayScrollbars -->
   <link rel="stylesheet" href="{{ asset('AdminAssets')}}/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
   <!-- Daterange picker -->

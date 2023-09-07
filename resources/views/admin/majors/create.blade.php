@@ -27,10 +27,10 @@
             <form action="{{ route('admin.major.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <label for="">Title</label>
-                <input class="form-control form-control-lg" type="text" name="title" value="{{ old('title') }}">
+                <input class="form-control form-control" type="text" name="title" value="{{ old('title') }}">
                 <br>
                 <label for="">Image</label>
-                <input class="form-control form-control-lg" type="file" name="image">
+                <input class="form-control form-control" type="file" name="image">
                 <br>
                 <input class="btn btn-primary" type="submit">
             </form>

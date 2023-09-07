@@ -7,24 +7,19 @@ use App\Models\Doctor;
 use App\Models\Major;
 use Illuminate\Http\Request;
 
-class MajorController extends Controller
+class HomeController extends Controller
 {
     public function index() {
 
         $majors = Major::orderBy('id', 'desc')
-        ->paginate(12);
-
-        return view('front.majors.index', compact('majors'));
-    }
-
-    public function show(Major $major) {
+        ->limit(8)
+        ->get();
 
         $doctors = Doctor::with('major')
-        ->where('major_id', '=', $major->id)
         ->orderBy('id', 'desc')
-        ->paginate(12);
+        ->limit(8)
+        ->get();
 
-        return view('front.majors.show', compact('doctors', 'major'));
+        return view('front.pages.home', compact('majors', 'doctors'));
     }
-
 }

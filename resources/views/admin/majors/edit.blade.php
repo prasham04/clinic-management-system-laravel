@@ -27,12 +27,12 @@
           @csrf
           @method('PUT')
           <label for="">Title</label>
-          <input class="form-control form-control-lg" type="text" name="title" value="{{ $major->title }}">
+          <input class="form-control form-control" type="text" name="title" value="{{ $major->title }}">
           <br>
           <label for="">Image</label>
           <br>
           <img src="{{ asset('images/majors/' . $major->image) }}" alt="" style="height: 150px;width: 150px;">                                
-          <input class="form-control form-control-lg mt-3" type="file" name="image" >
+          <input class="form-control form-control mt-3" type="file" name="image" >
           <br>
           <input class="btn btn-primary" type="submit">
       </form>

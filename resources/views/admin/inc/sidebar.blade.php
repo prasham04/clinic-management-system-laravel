@@ -63,7 +63,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link {{-- {{ (request()->is('admin/contacts*')) ? 'active' : '' }} --}}">
+            <a href="{{ route('admin.settings.edit') }}" class="nav-link {{ (request()->is('admin/settings*')) ? 'active' : '' }}">
               <i class="nav-icon fas fa-cog"></i>
               <p>
                 Settings

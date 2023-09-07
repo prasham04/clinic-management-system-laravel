@@ -3,7 +3,6 @@
 use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\admin\AdminController;
-use App\Http\Controllers\admin\MajorController;
 use App\Http\Controllers\admin\auth\LoginController;
 
 /*
@@ -25,13 +24,13 @@ Route::group([
     'as' => 'front.'
 
 ], function () {
-    Route::get('/', function () {
-        return view('front.home');
-    })->name('home');
-    
-    Route::get('/majors', function () {
-        return view('pages.majors');
-    })->name('majors');
+
+    // Home Page
+    Route::get('/', [\App\Http\Controllers\user\HomeController::class, 'index'])->name('home');
+
+    // Majors    
+    Route::get('/majors', [\App\Http\Controllers\user\MajorController::class, 'index'])->name('majors');
+    Route::get('/majors/{major}', [\App\Http\Controllers\user\MajorController::class,'show'])->name('majors.show');
 
     // Doctors    
     Route::get('/doctors', [\App\Http\Controllers\user\DoctorController::class, 'index'])->name('doctors');
@@ -73,12 +72,12 @@ Route::group([
     Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
     // Majors
-    Route::get('/majors', [MajorController::class, 'index'])->name('major.index');
-    Route::get('/majors/create', [MajorController::class, 'create'])->name('major.create');
-    Route::post('/majors/store', [MajorController::class, 'store'])->name('major.store');
-    Route::get('/majors/edit/{major}', [MajorController::class, 'edit'])->name('major.edit');
-    Route::put('/majors/update/{major}', [MajorController::class, 'update'])->name('major.update');
-    Route::delete('/majors/delete/{major}', [MajorController::class, 'destroy'])->name('major.destroy');
+    Route::get('/majors', [App\Http\Controllers\admin\MajorController::class, 'index'])->name('major.index');
+    Route::get('/majors/create', [App\Http\Controllers\admin\MajorController::class, 'create'])->name('major.create');
+    Route::post('/majors/store', [App\Http\Controllers\admin\MajorController::class, 'store'])->name('major.store');
+    Route::get('/majors/edit/{major}', [App\Http\Controllers\admin\MajorController::class, 'edit'])->name('major.edit');
+    Route::put('/majors/update/{major}', [App\Http\Controllers\admin\MajorController::class, 'update'])->name('major.update');
+    Route::delete('/majors/delete/{major}', [App\Http\Controllers\admin\MajorController::class, 'destroy'])->name('major.destroy');
 
     // Doctors
     Route::get('/doctors', [App\Http\Controllers\admin\DoctorController::class, 'index'])->name('doctor.index');
@@ -103,6 +102,10 @@ Route::group([
     // contacts 
     Route::get('/contacts', [App\Http\Controllers\admin\ContactController::class, 'index'])->name('contact.index');
     Route::delete('/contacts/delete/{contact}', [App\Http\Controllers\admin\ContactController::class, 'destroy'])->name('contact.destroy');
+
+     // Settings
+     Route::get('/settings', [App\Http\Controllers\admin\SettingController::class, 'edit'])->name('settings.edit');
+     Route::put('/settings', [App\Http\Controllers\admin\SettingController::class, 'update'])->name('settings.update');
     }
     );
 });
