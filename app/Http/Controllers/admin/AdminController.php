@@ -12,10 +12,10 @@ use App\Http\Controllers\Controller;
 class AdminController extends Controller
 {
     public function index() {
-        $majors = Major::get();
-        $doctors = Doctor::get();
-        $bookings = Booking::get();
-        $users = User::get();
+        $majors = Major::count();
+        $doctors = Doctor::count();
+        $bookings = Booking::count();
+        $users = User::count();
 
         return view ('admin.home', compact('majors', 'doctors', 'bookings', 'users'));
     }

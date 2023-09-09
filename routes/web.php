@@ -2,8 +2,10 @@
 
 use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\admin\AdminController;
-use App\Http\Controllers\admin\auth\LoginController;
+use App\Http\Controllers\user\HomeController;
+use App\Http\Controllers\user\MajorController;
+use App\Http\Controllers\user\DoctorController;
+use App\Http\Controllers\user\ContactController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,88 +28,21 @@ Route::group([
 ], function () {
 
     // Home Page
-    Route::get('/', [\App\Http\Controllers\user\HomeController::class, 'index'])->name('home');
+    Route::get('/', [HomeController::class, 'index'])->name('home');
 
     // Majors    
-    Route::get('/majors', [\App\Http\Controllers\user\MajorController::class, 'index'])->name('majors');
-    Route::get('/majors/{major}', [\App\Http\Controllers\user\MajorController::class,'show'])->name('majors.show');
+    Route::get('/majors', [MajorController::class, 'index'])->name('majors');
+    Route::get('/majors/{major}', [MajorController::class,'show'])->name('majors.show');
 
     // Doctors    
-    Route::get('/doctors', [\App\Http\Controllers\user\DoctorController::class, 'index'])->name('doctors');
-    Route::get('/booking/{doctor}',[\App\Http\Controllers\user\DoctorController::class, 'bookingPage'])->name('bookingPage');    
-    Route::post('/booking/{doctor}',[\App\Http\Controllers\user\DoctorController::class, 'booking'])->name('booking');
+    Route::get('/doctors', [DoctorController::class, 'index'])->name('doctors');
+    Route::get('/booking/{doctor}',[DoctorController::class, 'bookingPage'])->name('bookingPage');    
+    Route::post('/booking/{doctor}',[DoctorController::class, 'booking'])->name('booking');
 
     // Contacts
-    Route::get('/contact-us', [\App\Http\Controllers\user\ContactController::class, 'index'])->name('contact');
-    Route::post('/contact-us/store', [\App\Http\Controllers\user\ContactController::class, 'store'])->name('contact.store');
+    Route::get('/contact-us', [ContactController::class, 'index'])->name('contact');
+    Route::post('/contact-us/store', [ContactController::class, 'store'])->name('contact.store');
 
-});
-
-//----------------------------------------------------------------------------------------------------------------------------//
-
-// Admin routes
-
-Route::group([
-    'prefix' => 'admin',
-    'as' => 'admin.',
-
-] , function() {
-
-    Route::group([
-        'middleware' => ['guest'],
-        'controller' => LoginController::class,
-    ],
-    function() {
-        Route::get('/login', 'loginPage')->name('loginPage');
-        Route::post('/login', 'login')->name('login');
-    }
-    );
-
-    Route::group([
-        'middleware' => ['auth', 'checkIsAdmin']
-    ],
-    function() {
-    
-    Route::get('', [AdminController::class, 'index'])->name('dashboard');
-    Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
-
-    // Majors
-    Route::get('/majors', [App\Http\Controllers\admin\MajorController::class, 'index'])->name('major.index');
-    Route::get('/majors/create', [App\Http\Controllers\admin\MajorController::class, 'create'])->name('major.create');
-    Route::post('/majors/store', [App\Http\Controllers\admin\MajorController::class, 'store'])->name('major.store');
-    Route::get('/majors/edit/{major}', [App\Http\Controllers\admin\MajorController::class, 'edit'])->name('major.edit');
-    Route::put('/majors/update/{major}', [App\Http\Controllers\admin\MajorController::class, 'update'])->name('major.update');
-    Route::delete('/majors/delete/{major}', [App\Http\Controllers\admin\MajorController::class, 'destroy'])->name('major.destroy');
-
-    // Doctors
-    Route::get('/doctors', [App\Http\Controllers\admin\DoctorController::class, 'index'])->name('doctor.index');
-    Route::get('/doctors/create', [App\Http\Controllers\admin\DoctorController::class, 'create'])->name('doctor.create');
-    Route::post('/doctors/store', [App\Http\Controllers\admin\DoctorController::class, 'store'])->name('doctor.store');
-    Route::get('/doctors/edit/{doctor}', [App\Http\Controllers\admin\DoctorController::class, 'edit'])->name('doctor.edit');
-    Route::put('/doctors/update/{doctor}', [App\Http\Controllers\admin\DoctorController::class, 'update'])->name('doctor.update');
-    Route::delete('/doctors/delete/{doctor}', [App\Http\Controllers\admin\DoctorController::class, 'destroy'])->name('doctor.destroy');
-
-    // Bookings
-    Route::get('/bookings', [App\Http\Controllers\admin\BookingController::class, 'index'])->name('booking.index');
-    Route::delete('/bookings/delete/{booking}', [App\Http\Controllers\admin\BookingController::class, 'destroy'])->name('booking.destroy');
-
-    // Users
-    Route::get('/users', [App\Http\Controllers\admin\UserController::class, 'index'])->name('user.index');
-    Route::get('/users/create', [App\Http\Controllers\admin\UserController::class, 'create'])->name('user.create');
-    Route::post('/users/store', [App\Http\Controllers\admin\UserController::class,'store'])->name('user.store');
-    Route::get('/users/edit/{user}', [App\Http\Controllers\admin\UserController::class, 'edit'])->name('user.edit');
-    Route::put('/users/update/{user}', [App\Http\Controllers\admin\UserController::class, 'update'])->name('user.update');
-    Route::delete('/users/delete/{user}', [App\Http\Controllers\admin\UserController::class, 'destroy'])->name('user.destroy');
-
-    // contacts 
-    Route::get('/contacts', [App\Http\Controllers\admin\ContactController::class, 'index'])->name('contact.index');
-    Route::delete('/contacts/delete/{contact}', [App\Http\Controllers\admin\ContactController::class, 'destroy'])->name('contact.destroy');
-
-     // Settings
-     Route::get('/settings', [App\Http\Controllers\admin\SettingController::class, 'edit'])->name('settings.edit');
-     Route::put('/settings', [App\Http\Controllers\admin\SettingController::class, 'update'])->name('settings.update');
-    }
-    );
 });
 
 require_once __DIR__ . '/auth.php';

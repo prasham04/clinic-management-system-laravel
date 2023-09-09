@@ -52,13 +52,19 @@
                                 <a href="{{ route('admin.user.edit', $user ) }}" class="btn btn-success">
                                     <i class="far fa-edit"></i>
                                 </a>
+                                
+                                @if (!(auth()->user()->id == $user->id))
+
                                 <form action="{{ route('admin.user.destroy', $user ) }}" method="POST" class="d-inline">                                    
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-danger">
-                                        <i class="far fa-trash-alt"></i>
-                                    </button>
+                                  @csrf
+                                  @method('DELETE')
+                                  <button type="submit" class="btn btn-danger">
+                                      <i class="far fa-trash-alt"></i>
+                                  </button>
                                 </form>
+                                  
+                                @endif
+
                             </td>
                         </tr>
                     @empty

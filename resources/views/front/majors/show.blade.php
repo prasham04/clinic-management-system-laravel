@@ -134,7 +134,7 @@ Doctors of {{ $major->title }}
     </div>
     <div class="doctors-grid">
 
-        @foreach ($doctors as $doctor)
+        @forelse ($doctors as $doctor)
 
         <div class="card p-2" style="width: 18rem;">
             <img src="../assets/images/major.jpg" class="card-img-top rounded-circle card-image-circle"
@@ -145,8 +145,12 @@ Doctors of {{ $major->title }}
                 <a href="{{ route('front.booking', $doctor) }}" class="btn btn-outline-primary card-button">Book an appointment</a>
             </div>
         </div>
+
+        @empty
+
+        <p>there are no doctors</p>
             
-        @endforeach
+        @endforelse
         
     </div>
     <nav class="mt-5" aria-label="navigation">

@@ -15,7 +15,7 @@ Dashboard
                 <!-- small box -->
                 <div class="small-box bg-info">
                   <div class="inner">
-                    <h3>{{ $majors->count() }}</h3>
+                    <h3>{{ $majors }}</h3>
     
                     <p>Majors</p>
                   </div>
@@ -30,7 +30,7 @@ Dashboard
                 <!-- small box -->
                 <div class="small-box bg-success">
                   <div class="inner">
-                    <h3>{{ $doctors->count() }}</h3>
+                    <h3>{{ $doctors }}</h3>
     
                     <p>Doctors</p>
                   </div>
@@ -45,7 +45,7 @@ Dashboard
                 <!-- small box -->
                 <div class="small-box bg-warning">
                   <div class="inner">
-                    <h3>{{ $bookings->count() }}</h3>
+                    <h3>{{ $bookings }}</h3>
     
                     <p>Bookings</p>
                   </div>
@@ -60,7 +60,7 @@ Dashboard
                 <!-- small box -->
                 <div class="small-box bg-danger">
                   <div class="inner">
-                    <h3>{{ $users->count() }}</h3>
+                    <h3>{{ $users }}</h3>
     
                     <p>Users</p>
                   </div>
